@@ -1,12 +1,16 @@
 Simple script for systems running a linux operating system which creates a backup of a sprecified file.
 
-usage:
+usage:  
 cpbak [filename]
 
-the first execution of the day results in
+the first execution of the day results in:  
 [filename].yyyy-MM-dd
+
+example:  
 testfile.2024-04-12
 
-additional exucutions at the same date would add a number at the end
+additional exucutions at the same date would add a number at the end:  
 [filename].yyyy-MM-dd.XX
+
+example:  
 testfile.2024-04-12.01
