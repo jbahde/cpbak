@@ -1,0 +1,34 @@
+#!/bin/sh
+
+if [ $# = 0 ]; then
+  echo "usage: `basename $0` file(s)"
+  exit 2
+fi
+
+bak=`date +%Y-%m-%d`
+
+for file in $@
+do
+  if [ -f $file ]; then
+    if [ -f $file.$bak ]; then
+      count=0
+      ID=.01
+      while [ -f $file.$bak$ID ] 
+      do
+        count=`expr $count + 1`
+        ID=$count
+        if [ $count -lt 10 ]; then
+          ID=0$ID
+        fi
+        ID=.$ID
+      done
+    else
+      ID=
+    fi
+    cp -p $file $file.$bak$ID && echo cp -p $file $file.$bak$ID
+  else
+    echo file $file does not exist.
+  fi
+done
+
+exit 0
